@@ -10,8 +10,8 @@ import java.util.ResourceBundle;
 public class MainDataBaseMigration {
 
 
-    public static final String FLYWAY_PROD = "spring.flyway.";
-    public static final String FLYWAY_DEV = "spring.flyway.dev.";
+    public static final String FLYWAY_PROD = "flyway.";
+    public static final String FLYWAY_DEV = "flyway.dev.";
 
     public static void main(String[] args) {
         if (args.length == 0){
@@ -51,7 +51,7 @@ public class MainDataBaseMigration {
     public Properties readProperties() {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         Properties properties = new Properties();
-        try (InputStream inputStream = loader.getResourceAsStream("application.properties")) {
+        try (InputStream inputStream = loader.getResourceAsStream("db/flyway.properties")) {
             properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
