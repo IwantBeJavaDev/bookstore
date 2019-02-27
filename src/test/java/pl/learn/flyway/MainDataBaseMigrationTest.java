@@ -13,8 +13,15 @@ public class MainDataBaseMigrationTest {
         //when
         Properties properties = mainClass.readProperties();
         //then
-        assertThat(properties.getProperty("spring.flyway.password")).isEqualTo("test");
-        assertThat(properties.getProperty("spring.flyway.user")).isEqualTo("test");
-        assertThat(properties.getProperty("spring.flyway.url")).isEqualTo("jdbc:postgresql://localhost:5432/learn");
+        assertThat(properties.getProperty(MainDataBaseMigration.FLYWAY_PROD + "password")).isEqualTo("test");
+        assertThat(properties.getProperty(MainDataBaseMigration.FLYWAY_PROD + "user")).isEqualTo("test");
+        assertThat(properties.getProperty(MainDataBaseMigration.FLYWAY_PROD + "url")).isEqualTo("jdbc:postgresql://localhost:5432/learn");
+        //then - read dev properties
+        assertThat(properties.getProperty(MainDataBaseMigration.FLYWAY_DEV + "password")).isEqualTo("test");
+        assertThat(properties.getProperty(MainDataBaseMigration.FLYWAY_DEV + "user")).isEqualTo("test");
+        assertThat(properties.getProperty(MainDataBaseMigration.FLYWAY_DEV + "url")).isEqualTo("jdbc:postgresql://localhost:5432/learn_test");
+
     }
+
+
 }
