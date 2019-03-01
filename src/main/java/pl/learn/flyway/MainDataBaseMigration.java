@@ -5,28 +5,29 @@ import org.flywaydb.core.Flyway;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 public class MainDataBaseMigration {
 
 
     public static final String FLYWAY_PROD = "flyway.";
     public static final String FLYWAY_DEV = "flyway.dev.";
+    public static final String PRODUCTION = "production";
+    public static final String DEV = "dev";
 
     public static void main(String[] args) {
-        if (args.length == 0){
-            System.out.println("Set parameter: dev or prodution");
+        if (args.length == 0) {
+            System.out.printf("Set parameter: %1$s or %2$s", PRODUCTION, DEV);
             return;
         }
 
         MainDataBaseMigration mainClass = new MainDataBaseMigration();
         Properties properties = mainClass.readProperties();
-        if (args[0].equalsIgnoreCase("production")) {
+        if (args[0].equalsIgnoreCase(PRODUCTION)) {
             mainClass.runMigrationInProductionDataBase(properties);
-        } else if (args[0].equalsIgnoreCase("dev")) {
+        } else if (args[0].equalsIgnoreCase(DEV)) {
             mainClass.runMigrationInDevDataBase(properties);
         } else {
-            System.out.println("Not supported parameter");
+            System.out.printf("Not supported parameter use %1$s or %2$s", PRODUCTION, DEV);
         }
 
     }
