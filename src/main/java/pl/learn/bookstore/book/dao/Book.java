@@ -1,6 +1,7 @@
 package pl.learn.bookstore.book.dao;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -8,12 +9,22 @@ import java.util.Date;
 public class Book {
     @Id
     @Column(name = "ID_BOOK")
-    @SequenceGenerator(name = "S_BOOK", sequenceName = "S_BOOK", allocationSize = 1)
-    @GeneratedValue(generator = "S_BOOK")
+    @SequenceGenerator(name = "S_BOOK",  allocationSize = 1, schema = "bookstore")
+    @GeneratedValue(generator = "S_BOOK", strategy = GenerationType.SEQUENCE)
     private Long idBook;
     private String title;
     private String description;
-    private Date releaseDate;
+    private String isbn;
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    private LocalDate releaseDate;
 
     public Book() {
     }
@@ -42,11 +53,11 @@ public class Book {
         this.description = description;
     }
 
-    public Date getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 }
