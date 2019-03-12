@@ -40,7 +40,7 @@ public class BookRepositoryTest {
         book.setReleaseDate(LocalDate.now());
         book.setIsbn("22333-klld-9993");
         bookRepository.save(book);
-        log.warn(String.valueOf(book.getIdBook()));
+//        log.warn(String.valueOf(book.getIdBook()));
         assertThat(book.getIdBook(), notNullValue());
 
 
