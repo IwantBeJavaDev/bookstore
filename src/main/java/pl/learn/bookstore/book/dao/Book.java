@@ -1,12 +1,14 @@
 package pl.learn.bookstore.book.dao;
 
+import pl.learn.bookstore.common.AbstractEntity;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 @Table(name = "BOOK", schema = "bookstore")
-public class Book {
+public class Book extends AbstractEntity {
     @Id
     @Column(name = "ID_BOOK")
     @SequenceGenerator(name = "S_BOOK",  allocationSize = 1, schema = "bookstore")

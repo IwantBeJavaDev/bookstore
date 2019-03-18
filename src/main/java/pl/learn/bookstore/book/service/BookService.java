@@ -1,13 +1,10 @@
 package pl.learn.bookstore.book.service;
 
 import pl.learn.bookstore.book.dao.Book;
+import pl.learn.bookstore.common.BaseService;
 
 import java.util.List;
 
-public interface BookService {
-    Book saveOrUpdate(BookDto bookDto);
+public interface BookService extends BaseService<BookDto> {
 
-    void delete(Long idBook);
-
-    List<Book> findAll();
 }
