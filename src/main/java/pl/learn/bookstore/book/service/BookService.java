@@ -6,5 +6,5 @@ import pl.learn.bookstore.common.BaseService;
 import java.util.List;
 
 public interface BookService extends BaseService<BookDto> {
-
+    List<BookDto> findAll();
 }

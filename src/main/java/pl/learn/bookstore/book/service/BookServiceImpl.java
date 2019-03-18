@@ -6,6 +6,8 @@ import pl.learn.bookstore.book.dao.Book;
 import pl.learn.bookstore.book.dao.BookRepository;
 import pl.learn.bookstore.common.BaseAbstractService;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -29,5 +31,18 @@ public class BookServiceImpl extends BaseAbstractService<BookDto,Book> implement
     @Override
     public BookDto find(Long id) {
         return null;
+    }
+
+    @Override
+    public List<BookDto> findAll() {
+        List<Book> bookList = bookRepository.findAll();
+        List<BookDto> bookDtos = new ArrayList<>();
+        bookList.stream().forEach(book -> {
+            BookDto bookDto = new BookDto();
+            assignEntityToDto(book,bookDto);
+            bookDtos.add(bookDto);
+        });
+
+        return bookDtos;
     }
 }
