@@ -1,0 +1,7 @@
+#Production profile
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learn
+    password: test
+    username: test
+    driver-class-name: org.postgresql.Driver

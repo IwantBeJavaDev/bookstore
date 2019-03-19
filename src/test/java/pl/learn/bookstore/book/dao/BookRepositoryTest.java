@@ -23,7 +23,7 @@ import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BookstoreApplication.class)
-@ActiveProfiles("postgres-test")
+@ActiveProfiles("dev")
 @Transactional
 public class BookRepositoryTest {
     Logger log = LoggerFactory.getLogger(BookRepositoryTest.class);
@@ -42,7 +42,6 @@ public class BookRepositoryTest {
         bookRepository.save(book);
 //        log.warn(String.valueOf(book.getIdBook()));
         assertThat(book.getIdBook(), notNullValue());
-
 
     }
 

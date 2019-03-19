@@ -1,0 +1,8 @@
+#Testing profile
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learn_test
+    password: test
+    username: test
+    driver-class-name: org.postgresql.Driver
