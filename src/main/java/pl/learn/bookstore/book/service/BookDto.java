@@ -1,18 +1,21 @@
 package pl.learn.bookstore.book.service;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import pl.learn.bookstore.common.AbstractDto;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 
 public class BookDto extends AbstractDto {
     public Long idBook;
-    @NotNull
+    @NotNull(message = "Title is required")
     public String title;
     public String description;
-    @NotNull
+    @PastOrPresent(message = "Release date is required")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     public LocalDate releaseDate;
-    @NotNull
+    @NotNull(message = "ISBN is required")
     public String isbn;
 
     public BookDto() {

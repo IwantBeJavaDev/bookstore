@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org" lang="pl">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Book form</title>
+</head>
+<body>
+<div class="container">
+    <h3>Employee Directory</h3>
+    <hr>
+    <form action="#" th:action="@{/book/add}"
+          th:object="${bookDto}" method="POST">
+
+        <input type="text" th:field="*{title}"
+               class="form-control mb-4 col-4 " th:classappend="${#fields.hasErrors('title')} ? is-invalid : is-valid"
+               placeholder="Book title"/>
+
+        <input type="text" th:field="*{isbn}"
+               class="form-control mb-4 col-4 is-invalid"  th:classappend="${#fields.hasErrors('isbn')} ? is-invalid : is-valid"
+               placeholder="ISBN"/>
+
+
+        <input type="date" th:field="*{releaseDate}"
+               class="form-control mb-4 col-4 is-invalid"  th:classappend="${#fields.hasErrors('releaseDate')} ? is-invalid : is-valid"
+               placeholder="Release date"/>
+
+
+        <textarea th:field="*{description}" class="form-control"  rows="3" placeholder="Description"/>
+
+    <button type="submit" class="btn btn-info col-2">Save</button>
+    </form>
+</div>
+</body>
+</html>

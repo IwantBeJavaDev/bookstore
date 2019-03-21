@@ -3,20 +3,25 @@ package pl.learn.bookstore.book.dao;
 import pl.learn.bookstore.common.AbstractEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "BOOK", schema = "bookstore")
 public class Book extends AbstractEntity {
     @Id
     @Column(name = "ID_BOOK")
-    @SequenceGenerator(name = "S_BOOK",  allocationSize = 1, schema = "bookstore")
+    @SequenceGenerator(name = "S_BOOK", allocationSize = 1, schema = "bookstore")
     @GeneratedValue(generator = "S_BOOK", strategy = GenerationType.SEQUENCE)
     private Long idBook;
+    @NotBlank(message = "Title id required")
     private String title;
     private String description;
+    @NotBlank(message = "ISBN is required")
     private String isbn;
+    @PastOrPresent(message = "Release date is required")
+    private LocalDate releaseDate;
 
     public String getIsbn() {
         return isbn;
@@ -26,7 +31,6 @@ public class Book extends AbstractEntity {
         this.isbn = isbn;
     }
 
-    private LocalDate releaseDate;
 
     public Book() {
     }
