@@ -23,12 +23,12 @@
                placeholder="Book title"/>
 
         <input type="text" th:field="*{isbn}"
-               class="form-control mb-4 col-4 is-invalid"  th:classappend="${#fields.hasErrors('isbn')} ? is-invalid : is-valid"
+               class="form-control mb-4 col-4 "  th:classappend="${#fields.hasErrors('isbn')} ? is-invalid : is-valid"
                placeholder="ISBN"/>
 
 
         <input type="date" th:field="*{releaseDate}"
-               class="form-control mb-4 col-4 is-invalid"  th:classappend="${#fields.hasErrors('releaseDate')} ? is-invalid : is-valid"
+               class="form-control mb-4 col-4 "  th:classappend="${#fields.hasErrors('releaseDate')} ? is-invalid : is-valid"
                placeholder="Release date"/>
 
 

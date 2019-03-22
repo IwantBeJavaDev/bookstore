@@ -1,6 +1,7 @@
 package pl.learn.bookstore.book.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,8 @@ import pl.learn.bookstore.book.service.BookDto;
 import pl.learn.bookstore.book.service.BookService;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -24,6 +27,7 @@ public class BookController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(LocalDate.class, new StringTrimmerEditor(true));
     }
 
     @GetMapping("/list")
